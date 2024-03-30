@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter CSV em Array</title>
+</head>
+<body>
+    <input type="file" id="arquivo_html">
+    <pre id="saida_csv"></pre>
+
+    <script>
+        document.getElementById('arquivo_html').addEventListener('change', function(event) {
+            const arquivo = event.target.files[0];
+            const leitor = new FileReader();
+
+            leitor.onload = function(event) {
+                const conteudoArquivo = event.target.result;
+                // Coloca cada linha do texto em uma posição de um array
+                const linhas = conteudoArquivo.split('\n');
+                const arrayDados = [];
+
+                // Percorre o array com as linhas do arquivo
+                for (let i = 0; i < linhas.length; i++) {
+                    // Separa cada item da linha em uma posição de um array
+                    const linha = linhas[i].trim().split(',');
+                    // Adiciona o array dos itens da linha no array final
+                    arrayDados[i] = linha;
+                }
+
+                console.log(arrayDados); // Exibe o array no console
+                // Exibe o arrray no HTML                          Converte o array em texto
+                document.getElementById('saida_csv').textContent = JSON.stringify(arrayDados, null, 2);
+            };
+
+            leitor.readAsText(arquivo);
+        });
+    </script>
+</body>
+</html>

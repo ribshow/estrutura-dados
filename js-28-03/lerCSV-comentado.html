@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter CSV em Array</title>
+</head>
+<body>
+    <input type="file" id="arquivo_html">
+    <pre id="saida_csv"></pre>
+<script>
+    // Adiciona um ouvinte de evento ao elemento com o id 'arquivo_html' quando o conteúdo desse elemento muda (quando um arquivo é selecionado)
+    document.getElementById('arquivo_html').addEventListener('change', function(event) {
+        // Obtém o arquivo selecionado pelo usuário
+        const arquivo = event.target.files[0];
+        // Cria um novo objeto FileReader para ler o conteúdo do arquivo
+        const leitor = new FileReader();
+
+        // Define o que fazer quando o conteúdo do arquivo for carregado com sucesso
+        leitor.onload = function(event) {
+            // Obtém o conteúdo do arquivo
+            const conteudoArquivo = event.target.result;
+            // Coloca cada linha do texto em uma posição de um array, dividindo o conteúdo pelo caractere de quebra de linha '\n'
+            const linhas = conteudoArquivo.split('\n');
+            const arrayDados = [];
+
+            // Percorre o array com as linhas do arquivo
+            for (let i = 0; i < linhas.length; i++) {
+                // trim() retira os espaços em branco do texto
+                // Separa cada item da linha em uma posição de um array, dividindo a linha pelo caractere de vírgula ','
+                const linha = linhas[i].trim().split(',');
+                // Adiciona o array dos itens da linha no array final
+                arrayDados[i] = linha;
+            }
+            // Buscando pelo total de pessoas com status: INSCRITO
+            // indexOf é uma função nativa do JS, para manipulação de strings
+            // ele procura dentro da strings uma ocorrência específica
+            const inscritos = [];
+            for(var j = 0; j<arrayDados.length; j++){
+                    var inscrito = arrayDados[j].indexOf("INSCRITO");
+                    if(inscrito>=0){
+                        inscritos.push(inscrito);
+                    }
+                }
+            // Buscando pelo total de pessoas com status:
+            // Inscrição cancelada
+            const inscricaoCancelada = [];
+            for(var k = 0; k<arrayDados.length; k++){
+                var inscricao = arrayDados[k].indexOf("INSCRIÇÃO CANCELADA");
+                if(inscricao>=0){
+                    inscricaoCancelada.push(inscricao);
+                }
+            }
+            // Buscando pelo total de pesssoas com status:
+            // Curso concluído
+            const cursoConcluido = [];
+            for(var l = 0; l<arrayDados.length; l++){
+                var curso = arrayDados[l].indexOf("CURSO CONCLUÍDO");
+                if(curso>=0){
+                    cursoConcluido.push(curso);
+                }
+            }
+            // Exibindo o número de pessoas encontrada usando length
+            // já que cada posição do array é uma pessoa com o status correspondente
+            console.log(`Status INSCRITO: ${inscritos.length} pessoas`);
+            console.log(`Status INSCRIÇÃO CANCELADA: ${inscricaoCancelada.length} pessoas`);
+            console.log(`Status CURSO CONLUÍDO: ${cursoConcluido.length} pessoas`);
+            // Exibe o array no console para fins de depuração
+            console.log(arrayDados);
+            // Exibe o array no HTML, convertendo o array em uma string JSON formatada com recuo de 2 espaços
+            document.getElementById('saida_csv').textContent = JSON.stringify(arrayDados, null, 2);
+        };
+
+        // Inicia a leitura do conteúdo do arquivo como texto
+        leitor.readAsText(arquivo);
+    });
+</script>
+</body>
+</html>

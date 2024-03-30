@@ -1,0 +1,11 @@
+const numbers = [5, 3, 8, 1, 6];
+const minValue = Math.min(...numbers); // usa-se o operado spreead(...) para descompactar o array
+console.log(minValue); // Saída: 1
+
+Ordem crescente em javascript, para descrescente só inverter a ordem de a,b
+const numbers = [5, 3, 8, 1, 6];
+numbers.sort((a, b) => a - b);
+console.log(numbers); // Saída: [1, 3, 5, 6, 8]
+
+var conjunto = new Set(); // Função do javascript que cria conjuntos que não aceitam elementos repetidos
+variavel.add() adiciona elementos ao conjunto iterativamente . 
