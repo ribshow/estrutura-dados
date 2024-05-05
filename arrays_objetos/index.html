@@ -1,0 +1,86 @@
+<html>
+    <meta charset="utf-8">
+    <script>
+        nota_fiscal = [{
+            num: new Number(),
+            data: new Date(),
+            nome: new String(),
+            cpf: new String(),
+            end: new String(),
+            tipo: new Number(),
+            produtos:[{
+                nome: new String(),
+                v_unit: new Number(),
+                quant: new Number(),
+                desc: new Number()
+            }],
+            v_total: new Number()
+        }]
+
+        nota_fiscal.produtos = [{nome:'Vassoura',v_unit:15.9,quant:7,desc:0.2},
+                               {nome:'Sabonete',v_unit:4.39,quant:3,desc:0.5},
+                               {nome:'Coxão Mole',v_unit:29.99,quant:10,desc:0.1}]
+
+        console.log(nota_fiscal)
+
+            function cadastro(){
+                escolhe = []
+                nota_fiscal.num = 0
+                nota_fiscal.data = Date(prompt('Data de hoje:'))
+                nota_fiscal.nome = prompt('Cliente:')
+                nota_fiscal.cpf = prompt('CPF:')
+                nota_fiscal.end = prompt('Endereço:')
+                nota_fiscal.tipo = parseInt(prompt('Tipo: 1 - Retirada / 2 - Entrega'))
+            }
+        
+            function escolher(){
+                for(let i=0; i<=2; i++){
+                escolhe[i] = prompt(
+                    `Produtos Disponíveis: ${nota_fiscal.produtos[i].nome} 0-Comprar / 1-Não Comprar`
+                )
+                }
+            }
+
+            function exibir(){
+                iterar()
+                if(escolhe[0] == 0 && escolhe[1] == 0 && escolhe[2] == 0){
+                nota_fiscal.v_total = (
+                    nota_fiscal.produtos[0].v_unit + nota_fiscal.produtos[1].v_unit +
+                    nota_fiscal.produtos[2].v_unit) 
+                console.log(`
+                Nota Fiscal: ${nota_fiscal.num} 
+                Data: ${nota_fiscal.data}
+                Cliente: ${nota_fiscal.nome}
+                CPF: ${nota_fiscal.cpf}
+                Endereço: ${nota_fiscal.end}
+                Tipo do pedido(1-Retirada/2-Entrega): ${nota_fiscal.tipo}
+                ========================================================
+                Produtos: ${nota_fiscal.produtos[0].nome} - ${nota_fiscal.produtos[0].v_unit}
+                          ${nota_fiscal.produtos[1].nome} - ${nota_fiscal.produtos[1].v_unit}
+                          ${nota_fiscal.produtos[2].nome} - ${nota_fiscal.produtos[2].v_unit}
+                Valor Total: ${nota_fiscal.v_total}
+                `)
+            }
+            }
+        //}
+        cadastro()
+        escolher()
+        exibir()
+        function iterar() {
+            nota_fiscal.num = [nota_fiscal.num +1]
+        }
+        repeat = parseInt(prompt('Deseja comprar novamente? 1- Sim / 2- Não'))
+        //if(repeat == 1){
+        //    nota_fiscal.num = nota_fiscal.num +1
+        //}
+        do{iterar()
+           cadastro()
+           escolher()
+           exibir()
+           repeat = parseInt(prompt('Deseja comprar novamente? 1- Sim / 2- Não'))
+        }while(repeat == 1)
+        console.log(nota_fiscal)
+        
+
+    </script>
+</html>
