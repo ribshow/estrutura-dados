@@ -1,0 +1,24 @@
+<html>
+<meta charset="UTF-8">
+<script>
+    pessoa = []
+    for (var i = 0; i < 3; i++) {
+        pessoa[i] = {
+            nome: prompt("Qual seu nome?"),
+            idade: parseInt(prompt("Qual sua idade?"))
+        }
+
+    }
+    if (pessoa[0].idade > pessoa[1].idade && pessoa[0].idade > pessoa[2].idade) {
+        console.log(`${pessoa[0].nome}, é a pessoa mais velha`)
+    } else if (pessoa[1].idade > pessoa[0].idade && pessoa[1].idade > pessoa[2].idade) {
+        console.log(`${pessoa[1].nome}, é a pessoa mais velha`)
+    } else if (pessoa[2].idade > pessoa[0].idade && pessoa[2].idade > pessoa[1].idade) {
+        console.log(`${pessoa[2].nome}, é a pessoa mais velha`)
+    }
+    console.log(pessoa[0])
+    console.log(pessoa[1])
+    console.log(pessoa[2])
+</script>
+
+</html>

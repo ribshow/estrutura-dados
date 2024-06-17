@@ -1,0 +1,22 @@
+<html>
+    <meta charset="UTF8">
+    <script>
+        pNome = []
+        pIdade = []
+        for(let i=0; i<5; i++)
+        {
+            pNome[i] = prompt("Qual seu nome?")
+            pIdade[i] = parseInt(prompt("Qual sua idade?"))
+        }
+        for(let j=0; j<pNome.length; j++)
+        {
+            if(pIdade[j]>18){
+                console.log(`${pNome[j]}, ${pIdade[j]} anos, você é maior de idade.`)
+            }else(
+                console.log(`${pNome[j]}, ${pIdade[j]} anos, você é menor de idade`)
+            )
+        }
+        console.log(pNome)
+        console.log(pIdade)
+    </script>
+</html>

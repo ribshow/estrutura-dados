@@ -1,0 +1,14 @@
+<html>
+    <meta charset="UTF-8">
+    <script>
+        notas = []
+        sumNotas = 0
+        for(let i=0; i<3; i++)
+        {
+            notas[i] = parseFloat(prompt(`Digte sua nota:`))
+            sumNotas += notas[i]
+        }
+        media  = sumNotas/notas.length
+        console.log(`Sua média foi: ${media}`)
+    </script>
+</html>

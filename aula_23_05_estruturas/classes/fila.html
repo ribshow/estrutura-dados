@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fila Test</title>
+</head>
+<body>
+    <script type="module">
+        // Importando a classe Fila
+        import Fila from './Fila.js';
+
+        // Criando uma nova instância da fila
+        let fila = new Fila();
+
+        // Adicionando elementos à fila
+        fila.adicionar('Primeiro');
+        fila.adicionar('Segundo');
+        fila.adicionar('Terceiro');
+
+        // Visualizando o primeiro elemento da fila
+        console.log('Primeiro elemento:', fila.ver());
+
+        // Exibição personalizada do toString
+        console.log(fila.toString());
+        
+        // Removendo o primeiro elemento da fila
+        let removido = fila.remover();
+        console.log('Elemento removido:', removido);
+
+        // Verificando se a fila está vazia
+        console.log('Fila está vazia?', fila.esta_vazia());
+
+        // Obtendo o tamanho atual da fila
+        console.log('Tamanho da fila:', fila.tamanho());
+
+        // Limpando a fila
+        fila.limpar();
+
+        // Verificando se a fila está vazia após limpar
+        console.log('Fila está vazia após limpar?', fila.esta_vazia());
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilha Test</title>
+</head>
+<body>
+    <script type="module">
+        // Importando a classe pilha
+        import Pilha from './Pilha.js';
+
+        // instanciando a pilha
+        let pilha = new Pilha();
+
+        // Adicionando elementos a pilha
+        pilha.adicionar('elemento 1');
+        pilha.adicionar('elemento 2');
+        pilha.adicionar('elemento 3');
+        pilha.adicionar('elemento 4');
+        pilha.adicionar("elemento 5");
+        pilha.adicionar('elemento 6');
+        pilha.adicionar('elemento 7');
+        pilha.adicionar('elemento 8');
+        pilha.adicionar('elemento 9');
+        pilha.adicionar("elemento 10");
+
+        // primeiro elemento da pilha
+        console.log(pilha.ver());
+
+        // toString personalizado para fila
+        console.log(pilha.toString());
+
+        // Item removido
+        let removido = pilha.remover();
+        console.log(`Item removido: ${removido}`);
+
+        // A fila está vazia?
+        console.log("Fila está vazia? ", pilha.esta_vazia());
+
+        // Tamanho da Pilha
+        console.log("Tamanho da Pilha: ", pilha.tamanho());
+
+        // Limpar Pilha
+        pilha.limpar();
+        console.log("Pilha está vazia após limpeza?", pilha.esta_vazia());
+    </script>
+</body>
